@@ -1,0 +1,24 @@
+<h4>Listado</h4>
+<ol class="list-group">
+
+
+    @for (character of characterList; track character.name; let i = $index; let isFirst = $first; let isLast = $last; let isEven = $even; let isOdd = $odd) {
+        
+        <li class="list-group-item d-flex justify-content-between align-items-center" 
+            [class]="{'list-group-item-dark': isLast}">
+          <div>
+            <span class="text-primary"> {{i + 1}}</span>
+            <span>{{character.name}} - </span>
+            <strong>Power: </strong>
+            <span>{{character.power}}</span>
+            <span > Es el primero {{ isFirst}}</span>
+            <span > Es el último {{isLast}}</span>
+            <span > Es par {{isEven}}</span>
+          </div>
+          <button class="btn btn-danger" (click)="onDeleteCharacter(character.id)">X</button>
+        </li>
+
+      } @empty {
+        <li class="list-group-item">No items available.</li>
+      }
+</ol> 
